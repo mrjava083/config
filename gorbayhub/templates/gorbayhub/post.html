@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>گوربای هاب | {{post.titel}}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'gorbayhub/style.css' %}">
+</head>
+<body>
+	<nav class="tabs">
+		<h1 class="h1">🐈 گوربای هاب جایی برای افراد اهل دل</h1>
+	</nav>
+    <p></p>
+    <div style="display: grid;place-items: center;justify-items: center;justify-content: center;align-items: center;">
+        {% if post.admin == "Y" %}
+            <div class="best">
+                <div class="pr">
+                    <img class="img"src="{% static 'gorbayhub/main-photo.svg' %}" alt="img">
+                    <div class="comment-box__body" style="margin-right: 10px;">
+                        <h2 class="comment-box__details"><span>{{post.name}}</span><span class="comment-box__details-date"><img src="{% static 'gorbayhub/3-1.png' %}" style="width: 15px;height: 15px;margin-right: 5px;" alt="icon"></span></h2>
+                        <h3 class="h3"> {{post.titel}} | <span>👁 {{post.view}}</span></h3>
+                    </div>  
+                </div>
+                <hr>
+                <div style="direction: rtl;margin-left: 10px;margin-right: 10px;font-family: ISDN;width: 650px;">
+                    <p style="font-family: ISDN;">{{post.body|linebreaks}}</p>
+                </div> 
+            </div> 
+        {% else %}
+            <div class="best">
+                <div class="pr">
+                    <img class="img"src="{% static 'gorbayhub/main-photo.svg' %}" alt="img">
+                    <div class="comment-box__body" style="margin-right: 10px;">
+                        <h2 class="comment-box__details"><span>{{post.name}}</span><span class="comment-box__details-date"></span></h2>
+                        <h3 class="h3"> {{post.titel}} | <span>👁 {{post.view}}</span></h3>
+                    </div>  
+                </div>
+                <hr>
+                <div style="direction: rtl;margin-left: 10px;margin-right: 10px;font-family: ISDN;width: 650px;">
+                    <p style="font-family: ISDN;">{{post.body|linebreaks}}</p>
+        {% endif %}
+    </div>
+	
+		
+</body>
+</html>

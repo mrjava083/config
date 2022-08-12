@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>گوربای هاب | Gorbay Hub</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'gorbayhub/style.css' %}">
+</head>
+<body>
+	<nav class="tabs">
+		<h1 class="h1">🐈 گوربای هاب جایی برای افراد اهل دل</h1>
+		<a class="a" href="{% url 'gorbayhub:Add' %}">اضافه کردن رمان خودتان</a>
+	</nav>
+	<h1 class="h_1">تازه ترین رمان ها</h1>
+	{% for i in roman %}
+	{% if i.admin == "Y" %}
+		<div class="roman">
+			<img class="img"src="{% static 'gorbayhub/main-photo.svg' %}" alt="img">
+				<div class="comment-box__body" style="margin-right: 10px;">
+					<a href="Post/{{i.slug}}" style="text-decoration: none;" class="comment-box__details"><span>{{i.name}}</span><span class="comment-box__details-date"><img src="{% static 'gorbayhub/3-1.png' %}" style="width: 15px;height: 15px;margin-right: 5px;" alt="icon"></span></a>
+					<h3 class="h3"> {{i.titel}} | <span>👁 {{i.view}}</span></h3>
+				</div>
+			</div>
+	{% else %}
+			<div class="roman">
+			<img class="img"src="{% static 'gorbayhub/main-photo.svg' %}" alt="img">
+				<div class="comment-box__body" style="margin-right: 10px;">
+					<a href="Post/{{i.slug}}" style="text-decoration: none;" class="comment-box__details"><span>{{i.name}}</span><span class="comment-box__details-date"></span></a>
+					<h3 class="h3"> {{i.titel}} | <span>👁 {{i.view}}</span></h3>
+				</div>
+			</div>.
+	{% endif %}
+	{% endfor %}
+</body>
+</html>
